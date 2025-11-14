@@ -10,20 +10,18 @@ if (!container) {
 for (let i = 0; i < SQUARES; i++) {
   const sq = document.createElement('div');
   sq.className = 'square';
-  // inner span just ensures square keeps aspect ratio set by padding-top
+
+  // inner span keeps the aspect ratio trick working and avoids collapsing
   const inner = document.createElement('span');
   sq.appendChild(inner);
 
-  // mouseenter is non-bubbling and reliable for single-target hover
+  // Use mouseenter (non-bubbling) for reliable single-target hover
   sq.addEventListener('mouseenter', () => {
-    // set a random color immediately
     const color = randomColor();
-    // apply color (triggers CSS transition)
-    sq.style.backgroundColor = color;
+    sq.style.backgroundColor = color; // triggers CSS transition
 
-    // revert after 1 second (1000ms)
+    // revert after exactly 1000ms (1s)
     setTimeout(() => {
-      // revert to base color — transition defined in CSS causes smooth fade
       sq.style.backgroundColor = BASE_COLOR;
     }, 1000);
   });
@@ -31,11 +29,11 @@ for (let i = 0; i < SQUARES; i++) {
   container.appendChild(sq);
 }
 
-// random HSL color for good variety
+// random HSL color
 function randomColor() {
   const h = Math.floor(Math.random() * 360);
-  const s = 70; // saturation
-  const l = 60; // lightness
-  return `hsl(${h} ${s}% ${l}%)`;
+  const s = 70; // saturation %
+  const l = 60; // lightness %
+  return `hsl(${h}, ${s}%, ${l}%)`;
 }
 
