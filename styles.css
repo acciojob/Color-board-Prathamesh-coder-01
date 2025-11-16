@@ -21,10 +21,10 @@ html, body {
 /* squares required by tests */
 .square {
   width: 100%;
-  padding-top: 100%;           /* makes a square using aspect ratio trick */
-  background: #1d1d1d;         /* base color to revert to */
+  padding-top: 100%;           
+  background: #1d1d1d;         
   border-radius: 4px;
-  transition: background-color 1s ease; /* smooth fade-out/in */
+  transition: background-color 1s ease; 
   box-shadow: inset 0 0 0 2px rgba(0,0,0,0.06);
   position: relative;
   overflow: hidden;
